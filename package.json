@@ -1,0 +1,22 @@
+{
+  "name": "auth-node-multidb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.10"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon src/server.js --ignore __tests__",
+    "start": "node src/server.js"
+  }
+}
