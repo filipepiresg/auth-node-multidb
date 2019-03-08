@@ -1,4 +1,4 @@
-const { sequelize } = require("../../src/app/models/postgres")
+const { sequelize } = require("../../../src/app/models/postgres")
 
 module.exports = () => {
   return Promise.all(

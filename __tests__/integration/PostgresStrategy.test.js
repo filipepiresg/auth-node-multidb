@@ -1,6 +1,6 @@
 const Context = require("../../src/database/strategies/base/ContextStrategy")
 const PostegresStrategy = require("../../src/database/strategies/postgres")
-const truncate = require("../util/truncate_postgres")
+const truncate = require("../utils/postgres/truncate")
 
 const Postgres = new Context(new PostegresStrategy())
 

@@ -1,2 +1,5 @@
 node_modules
 *.log
+yarn-*.log
+node-*.log
+__tests__/database.sqlite
