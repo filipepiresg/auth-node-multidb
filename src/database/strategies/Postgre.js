@@ -1,10 +1,5 @@
-// const Sequelize = require("sequelize")
-// const path = require("path")
-
 const Crud = require("./interfaces/CRUD")
 const { sequelize, Sequelize, ...models } = require("../../app/models/postgres")
-// const { getModelsPostgres } = require("../../utils")
-// const config = require("../../config/postgres/config")
 
 class PostgresStrategy extends Crud {
   constructor() {
@@ -18,7 +13,6 @@ class PostgresStrategy extends Crud {
       await this._driver.sequelize.authenticate()
       return true
     } catch (err) {
-      // console.error(err)
       return false
     }
   }
