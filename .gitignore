@@ -3,3 +3,4 @@ node_modules
 yarn-*.log
 node-*.log
 __tests__/database.sqlite
+__tests__/coverage
