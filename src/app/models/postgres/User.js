@@ -26,13 +26,13 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       password: {
-        type: DataTypes.VIRTUAL
-      },
-      hashPassword: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.VIRTUAL,
         required: true,
         validate: { min: 8, isAlphanumeric: true }
+      },
+      password_hash: {
+        type: DataTypes.STRING,
+        allowNull: false
       },
       created_at: {
         type: DataTypes.DATE,
@@ -45,8 +45,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       hooks: {
-        beforeSave: async user => {
-          user.hashPassword = await bcrypt.hash(user.password, 11)
+        beforeValidate: async user => {
+          if (user.password) {
+            user.password_hash = await bcrypt.hash(user.password, 8)
+          }
         }
       },
       tableName: "TB_USERS"

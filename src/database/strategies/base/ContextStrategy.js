@@ -11,18 +11,18 @@ class ContextStrategy {
   disconnect() {
     return this._database.disconnect()
   }
-  /* createUser(user) {
-    return this._database.createUser(user)
+  create(item) {
+    return this._database.create(item)
   }
-  readUser(query) {
-    return this._database.readUser(query)
+  read(query) {
+    return this._database.read(query)
   }
-  update(id, user) {
-    return this._database.updateUser(id, user)
+  update(id, item) {
+    return this._database.update(id, item)
   }
   delete(id) {
-    return this._database.deleteUser(id)
-  } */
+    return this._database.delete(id)
+  }
 }
 
 module.exports = ContextStrategy

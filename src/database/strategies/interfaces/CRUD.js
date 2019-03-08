@@ -1,16 +1,16 @@
 const NotImplementedException = require("./NotImplementedException")
 
 class CRUD {
-  createUser(user) {
+  create(item) {
     throw new NotImplementedException()
   }
-  readUser(query) {
+  read(query) {
     throw new NotImplementedException()
   }
-  updateUser(id, user) {
+  update(id, item) {
     throw new NotImplementedException()
   }
-  deleteUser(id) {
+  delete(id) {
     throw new NotImplementedException()
   }
 }
