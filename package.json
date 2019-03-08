@@ -1,7 +1,7 @@
 {
   "name": "auth-node-multidb",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -15,11 +15,13 @@
   "devDependencies": {
     "faker": "^4.1.0",
     "jest": "^24.1.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "sqlite3": "^4.0.6"
   },
   "scripts": {
     "test": "NODE_ENV=test jest",
-    "dev": "nodemon src/server.js -w src",
-    "start": "node src/server.js"
+    "test:watch": "NODE_ENV=test jest --watchman",
+    "dev": "nodemon src/server.js -w src/",
+    "start": "node src/server"
   }
 }
