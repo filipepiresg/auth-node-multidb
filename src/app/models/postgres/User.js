@@ -5,41 +5,40 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     "User",
     {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
-      },
       name: {
         type: DataTypes.STRING,
         required: true,
         allowNull: false,
-        validate: { isAlpha: true }
+        validate: {
+          notEmpty: {
+            msg: "This field should not be empty"
+          }
+        }
       },
       email: {
         type: DataTypes.STRING,
         required: true,
+        allowNull: false,
         unique: true,
         validate: {
-          isEmail: true
+          isEmail: {
+            msg: "This field must be an e-mail"
+          }
         }
       },
       password: {
         type: DataTypes.VIRTUAL,
         required: true,
-        validate: { min: 8, isAlphanumeric: true }
+        validate: {
+          // isAlphanumeric: true,
+          len: {
+            args: [6, 20],
+            msg: "This field must be between 4 and 20 characters"
+          }
+        }
       },
       password_hash: {
         type: DataTypes.STRING,
-        allowNull: false
-      },
-      created_at: {
-        type: DataTypes.DATE,
-        allowNull: false
-      },
-      updated_at: {
-        type: DataTypes.DATE,
         allowNull: false
       }
     },
