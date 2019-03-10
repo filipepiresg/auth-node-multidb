@@ -43,25 +43,17 @@ class PostgresStrategy extends Crud {
     const {
       dataValues: { id, name, email, updated_at, created_at, password_hash }
     } = await this._db.User.create(item)
-    return { id, name, email, password_hash, created_at, updated_at }
+    return { id, name, email, created_at, updated_at }
   }
   async read(query) {
-    return this._db.User.findAll({
+    return await this._db.User.findAll({
       where: { ...query },
       raw: true,
-      attributes: [
-        "id",
-        "name",
-        "email",
-        "password_hash",
-        "created_at",
-        "updated_at"
-      ]
+      attributes: ["id", "name", "email", "created_at", "updated_at"]
     })
   }
   async update(id, item) {
-    // const result = await this._db.User.update(
-    return this._db.User.update(
+    return await this._db.User.update(
       { ...item },
       {
         where: { id },
@@ -71,10 +63,9 @@ class PostgresStrategy extends Crud {
         // raw: true
       }
     )
-    // return [user]
   }
   async delete(id) {
-    return this._db.User.destroy({ where: { id } })
+    return await this._db.User.destroy({ where: { id } })
   }
 }
 

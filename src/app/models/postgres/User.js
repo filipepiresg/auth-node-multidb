@@ -30,10 +30,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.VIRTUAL,
         required: true,
         validate: {
-          // isAlphanumeric: true,
           len: {
             args: [6, 20],
-            msg: "This field must be between 4 and 20 characters"
+            msg: "The password field must be between 6 and 20 characters"
           }
         }
       },

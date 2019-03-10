@@ -57,6 +57,7 @@ describe("Test suite for CRUD on Postegres Strategy", () => {
     delete dataValues.created_at
     delete dataValues.updated_at
     delete dataValues.password
+    delete dataValues.password_hash
 
     const [user] = await db.read({ id: dataValues.id })
 
@@ -71,6 +72,7 @@ describe("Test suite for CRUD on Postegres Strategy", () => {
     delete dataValues.created_at
     delete dataValues.updated_at
     delete dataValues.password
+    delete dataValues.password_hash
 
     const [code_update] = await db.update(dataValues.id, {
       name: "Filipe Pires"
