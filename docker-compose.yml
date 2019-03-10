@@ -21,7 +21,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: docker
       MONGO_INITDB_ROOT_PASSWORD: docker
-      MONGO_INITDB_DATABASE: nodeauth
+      # MONGO_INITDB_DATABASE: nodeauth
     ports:
       - 27017:27017
   mongoclient:
