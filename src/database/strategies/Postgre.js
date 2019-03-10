@@ -58,9 +58,6 @@ class PostgresStrategy extends Crud {
       {
         where: { id },
         fields: Object.keys(item)
-        // returning: true,
-        // plain: true,
-        // raw: true
       }
     )
   }

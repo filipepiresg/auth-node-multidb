@@ -5,14 +5,6 @@ const factories = require("../utils/postgres/factories")
 
 const db = new Context(new PostgreStrategy())
 
-// const USER_CREATE = {
-//   name: "Filipe",
-//   email: "filipepiresg@gmail.com",
-//   password: "123456"
-// }
-// const USER_UPDATE = {
-//   name: "Filipe Pires"
-// }
 describe("Test suite for Postegres Strategy", () => {
   it("should test the auto connection to db", async () => {
     const connection = await db.isConnected()
