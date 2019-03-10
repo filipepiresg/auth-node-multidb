@@ -12,7 +12,7 @@ const USER_CREATE = {
 const USER_UPDATE = {
   name: "Filipe Pires"
 }
-describe.only("Test suite for Mongo Strategy", () => {
+describe("Test suite for Mongo Strategy", () => {
   it("should test the auto connection to db", async () => {
     const connection = await db.isConnected()
 

@@ -1,18 +1,10 @@
 const Context = require("../../src/database/strategies/base/ContextStrategy")
 const PostgreStrategy = require("../../src/database/strategies/Postgre")
 const truncate = require("../utils/postgres/truncate")
-const factories = require("../utils/postgres/factories")
+const factories = require("../utils/factories")
 
 const db = new Context(new PostgreStrategy())
 
-// const USER_CREATE = {
-//   name: "Filipe",
-//   email: "filipepiresg@gmail.com",
-//   password: "123456"
-// }
-// const USER_UPDATE = {
-//   name: "Filipe Pires"
-// }
 describe("Test suite for Postegres Strategy", () => {
   it("should test the auto connection to db", async () => {
     const connection = await db.isConnected()
@@ -30,12 +22,12 @@ describe("Test suite for Postegres Strategy", () => {
   })
 })
 
-describe("Test suite for CRUD on Postegres Strategy", () => {
+describe.only("Test suite for CRUD on Postegres Strategy", () => {
   beforeEach(async () => {
     await truncate()
   })
   it("should test the created user on db", async () => {
-    const { dataValues } = await factories.create("User", {
+    const { dataValues } = await factories.create("UserPostgres", {
       name: "Filipe",
       email: "filipepiresg@gmail.com"
     })
@@ -52,7 +44,7 @@ describe("Test suite for CRUD on Postegres Strategy", () => {
     })
   })
   it("should test the read user on db", async () => {
-    const { dataValues } = await factories.create("User")
+    const { dataValues } = await factories.create("UserPostgres")
 
     delete dataValues.created_at
     delete dataValues.updated_at
@@ -67,7 +59,7 @@ describe("Test suite for CRUD on Postegres Strategy", () => {
     expect(user).toEqual(dataValues)
   })
   it("should test the update user on db", async () => {
-    const { dataValues } = await factories.create("User")
+    const { dataValues } = await factories.create("UserPostgres")
 
     delete dataValues.created_at
     delete dataValues.updated_at
@@ -88,7 +80,7 @@ describe("Test suite for CRUD on Postegres Strategy", () => {
   it("should test the delete user on db", async () => {
     const {
       dataValues: { id }
-    } = await factories.create("User")
+    } = await factories.create("UserPostgres")
 
     const code_delete = await db.delete(id)
 
