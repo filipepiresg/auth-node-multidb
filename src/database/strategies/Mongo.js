@@ -15,14 +15,20 @@ class MongoStrategy extends Crud {
       return false
     }
   }
-  connect() {
+  _defineModels() {
+    Promise.all(
+      Object.keys(models).forEach(async model => {
+        this._db[model] = await models[model]
+      })
+    )
+  }
+  async connect() {
     const _models = Object.keys(this._db)
     if (_models.length === 0) {
-      Object.keys(models).forEach(model => {
-        this._db[model] = models[model]
-      })
+      this._db.mongoose = mongoose
+      await this._db.mongoose.run()
+      await this._defineModels()
     }
-    this._db.mongoose = mongoose
   }
   disconnect() {
     if (Object.keys(this._db).length !== 0) {

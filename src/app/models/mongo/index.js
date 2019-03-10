@@ -51,8 +51,7 @@ const run = async () => {
   )
 }
 
-run().catch(error => console.error(error))
-
 db.mongoose = mongoose
+db.mongoose.run = run()
 
 module.exports = db
